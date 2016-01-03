@@ -14,6 +14,7 @@ namespace NetWrok
 		public Clan clan;
 		public Inbox inbox;
 		public Squad squad;
+		public Location location;
 
 		public API ()
 		{
@@ -23,6 +24,7 @@ namespace NetWrok
 			clan = new Clan (){ api = this };
 			inbox = new Inbox (){ api = this };
 			squad = new Squad () { api = this };
+			location = new Location () { api = this };
 		}
 
 		public void Join (string room)
@@ -42,7 +44,6 @@ namespace NetWrok
         
 		public Request Register (string handle, string email, string password)
 		{
-            
 			var hash = SHA256 (password).ToLower ();
 			return Request ("member.register", handle, email, hash);
 		}
